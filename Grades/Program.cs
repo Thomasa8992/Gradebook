@@ -14,12 +14,14 @@ namespace Grades
             //when creating a class definition we can think of the class as a cookie cutter. Class can be used to create objects with a specific and consistent shape
             //using the new keyword allows us to ask for a new instance of the Gradebook class. We store a reference of the object in the variable book
             GradeBook book = new GradeBook();
+            book.Name = "Adrian's Grade Book";
             book.AddGrade(91);
             book.AddGrade(89.5f);
             book.AddGrade(75);
 
 
             GradeStatistics stats = book.ComputeStatistics();
+            Console.WriteLine(book.Name);
             WriteResult("Average", stats.AverageGrade);
             WriteResult("Highest", (int)stats.HighestGrade);
             WriteResult("Lowest", stats.LowestGrade);

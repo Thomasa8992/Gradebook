@@ -34,8 +34,21 @@ namespace Grades
             stats.AverageGrade = sum / grades.Count();
             return stats;
         }
-
-        public string Name;
+        //p
+        public string Name
+        {
+            get
+            {
+                return Name;
+            }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    Name = value;
+                }
+            }
+        }
 
         private List<float> grades;
     }
