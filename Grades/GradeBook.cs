@@ -12,6 +12,7 @@ namespace Grades
         //this is considered a default constructor because it doesn't take anyy parameters
         public GradeBook()
         {
+            _name = "Empty";
             grades = new List<float>();
         }
         public void AddGrade(float grade)
@@ -39,17 +40,27 @@ namespace Grades
         {
             get
             {
-                return Name;
+                return _name;
             }
             set
             {
                 if (!String.IsNullOrEmpty(value))
                 {
-                    Name = value;
+                    if(_name != value)
+                    {
+                        NameChangedEventArgs args = new NameChangedEventArgs();
+                        args.ExistingName = _name;
+                        args.NewName = value;
+                        NameChanged(this, args);
+                    }
+
+                    _name = value;
                 }
             }
         }
 
+        public event NameChangedDelegate NameChanged;
+        public string _name;
         private List<float> grades;
     }
 }
